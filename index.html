@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCPA Barasa | Governor's Cup 2025 Finals</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Font for a sporty look, using Inter as the base */
+        @import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&display=swap');
+        
+        .font-headline {
+            font-family: 'Chivo Mono', monospace;
+            font-weight: 800;
+        }
+
+        /* Custom colors based on the image branding */
+        .bg-kakamega-green { background-color: #1E8449; }
+        .text-kakamega-yellow { color: #FFD700; }
+        .bg-kakamega-red { background-color: #C0392B; }
+        .border-kakamega-yellow { border-color: #FFD700; }
+        .bg-kakamega-yellow { background-color: #FFD700; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Header Section with Diagonal Background Effect -->
+    <header class="relative overflow-hidden pt-12 pb-24 bg-kakamega-green text-white shadow-xl">
+        
+        <!-- Diagonal Red & White Slice Effect (Mimicking Poster) -->
+        <div class="absolute inset-0 z-0">
+            <!-- Green background is main -->
+            <div class="absolute inset-0 bg-kakamega-green"></div>
+            
+            <!-- Red Slice -->
+            <div class="absolute top-0 right-0 w-3/4 h-full bg-kakamega-red transform skew-y-[15deg] md:skew-y-[8deg] -translate-y-1/2"></div>
+            
+            <!-- White Slice (Background under the schedule area) -->
+            <div class="absolute top-0 right-0 w-2/4 h-full bg-white transform skew-y-[15deg] md:skew-y-[8deg] -translate-y-1/2 opacity-20"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Logos and Branding -->
+            <div class="flex flex-col md:flex-row justify-between items-center mb-10 space-y-4 md:space-y-0">
+                <div class="flex items-center space-x-4">
+                    <!-- County Logo Placeholder - UPDATED with the uploaded image -->
+                    <div class="w-12 h-12">
+                        <!-- Use a small image here for the logo -->
+                        <img src="uploaded:County-Government-of-Kakamega-removebg-preview.png-abe3cd6c-2476-4f87-93cb-e65c3fb0ee5e" alt="County Government of Kakamega Logo" class="w-full h-full object-contain rounded-full bg-white p-1">
+                    </div>
+                    <p class="text-xs font-semibold uppercase tracking-widest border-b-2 border-white pb-1">County Government of Kakamega</p>
+                </div>
+                
+                <!-- Governor's Cup Banner Placeholder -->
+                <div class="text-center md:text-right">
+                    <p class="font-headline text-3xl sm:text-4xl text-kakamega-yellow tracking-tighter leading-none">FCPA BARASA | GOVERNOR'S CUP</p>
+                    <p class="font-bold text-lg sm:text-xl border-b-4 border-kakamega-yellow inline-block mt-2 px-3">BIGGER AND BETTER</p>
+                    <p class="text-sm mt-1">2025 EDITION</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-start md:space-x-12 mt-16">
+                <!-- Image Placeholder (Left Side) - UPDATED with a placeholder reflecting the uploaded image's content -->
+                <div class="flex-shrink-0 mb-8 md:mb-0 w-full md:w-1/3 max-w-xs mx-auto md:mx-0 rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition duration-300">
+                    <img src="https://placehold.co/400x600/1E8449/ffffff?text=Governor+Official+Photo" alt="FCPA Barasa Official" class="w-full h-auto object-cover">
+                </div>
+
+                <!-- Finals Schedule (Right Side) -->
+                <div class="md:w-2/3 bg-white/90 p-6 sm:p-8 rounded-xl shadow-2xl backdrop-blur-sm">
+                    <h2 class="text-4xl sm:text-5xl font-headline text-kakamega-green mb-6 leading-tight">
+                        <span class="block text-kakamega-red text-2xl font-normal tracking-wider">The Official</span>
+                        FINALS SCHEDULE
+                    </h2>
+
+                    <div class="space-y-4">
+                        <!-- Schedule Items -->
+                        <div id="schedule-container" class="space-y-4">
+                            <!-- Data will be loaded here via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center mt-16">
+                <p class="text-xl sm:text-3xl font-bold tracking-widest uppercase border-y-4 border-kakamega-yellow py-4 text-kakamega-yellow shadow-lg">
+                    GET READY FOR ULTIMATE SPORTING EXPERIENCE!
+                </p>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- Key Statistics Section -->
+    <section class="py-12 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- Stat 1 -->
+                <div class="p-6 bg-kakamega-red rounded-xl transform hover:scale-105 transition duration-300 shadow-xl">
+                    <p class="text-6xl font-headline text-white">960</p>
+                    <p class="text-xl font-bold uppercase tracking-wider text-kakamega-yellow mt-2">Teams</p>
+                </div>
+                <!-- Stat 2 -->
+                <div class="p-6 bg-kakamega-green rounded-xl transform hover:scale-105 transition duration-300 shadow-xl">
+                    <p class="text-6xl font-headline text-white">60</p>
+                    <p class="text-xl font-bold uppercase tracking-wider text-kakamega-yellow mt-2">Wards</p>
+                </div>
+                <!-- Stat 3 -->
+                <div class="p-6 bg-kakamega-red rounded-xl transform hover:scale-105 transition duration-300 shadow-xl">
+                    <p class="text-6xl font-headline text-white">12</p>
+                    <p class="text-xl font-bold uppercase tracking-wider text-kakamega-yellow mt-2">Subcounties</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer and Hashtags -->
+    <footer class="py-6 bg-gray-800 text-gray-300 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-sm font-bold tracking-wider">Follow the conversation:</p>
+            <div class="mt-2 space-x-4 text-kakamega-yellow text-md font-medium">
+                <span class="hover:text-white transition duration-200 cursor-pointer">#GovernorBarasaDelivers</span>
+                <span class="hover:text-white transition duration-200 cursor-pointer">#NiYetu</span>
+                <span class="hover:text-white transition duration-200 cursor-pointer">#2025Edition</span>
+            </div>
+            <p class="mt-4 text-xs">&copy; 2025 Kakamega County Government. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Schedule Rendering -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const scheduleData = [
+                { date: "02ND DEC 2025", teams: "IKOLOMANI & SHINYALU" },
+                { date: "03RD DEC 2025", teams: "BUTERE & MUMIAS WEST" },
+                { date: "04TH DEC 2025", teams: "LURAMBI & KHWISERO" },
+                { date: "07TH DEC 2025", teams: "MATUNGU & MUMIAS EAST" },
+                { date: "08TH DEC 2025", teams: "LIKUYANI & LUGARI" }
+            ];
+
+            const container = document.getElementById('schedule-container');
+
+            scheduleData.forEach(item => {
+                const scheduleItem = document.createElement('div');
+                scheduleItem.className = 'flex flex-col sm:flex-row items-start sm:items-center p-4 rounded-lg bg-gray-100 shadow-lg border-l-8 border-kakamega-yellow hover:bg-gray-200 transition duration-300';
+                
+                scheduleItem.innerHTML = `
+                    <div class="sm:w-1/3 flex-shrink-0 mb-2 sm:mb-0">
+                        <p class="text-lg font-headline font-extrabold text-kakamega-red tracking-wider">${item.date}</p>
+                    </div>
+                    <div class="sm:w-2/3">
+                        <p class="text-xl font-bold text-gray-900 uppercase">${item.teams}</p>
+                    </div>
+                `;
+                container.appendChild(scheduleItem);
+            });
+        });
+
+        // Simple exponential backoff retry function for API calls if needed (as per instructions)
+        async function fetchWithRetry(url, options, retries = 3, delay = 1000) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    return response;
+                } catch (error) {
+                    if (i === retries - 1) {
+                        console.error('Final API fetch failed:', error);
+                        throw error;
+                    }
+                    // Wait with exponential backoff
+                    await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+                }
+            }
+        }
+    </script>
+</body>
+</html>
