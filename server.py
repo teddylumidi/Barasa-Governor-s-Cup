@@ -16,6 +16,7 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Expires', '0')
         super().end_headers()
 
+socketserver.TCPServer.allow_reuse_address = True
 with socketserver.TCPServer(("0.0.0.0", PORT), MyHTTPRequestHandler) as httpd:
     print(f"Server running at http://0.0.0.0:{PORT}/")
     httpd.serve_forever()
