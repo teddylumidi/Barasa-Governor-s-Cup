@@ -9,8 +9,6 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%231a5a96' width='192' height='192'/><text x='96' y='110' font-size='80' font-weight='bold' text-anchor='middle' fill='%23FFD700'>FC</text></svg>">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
@@ -20,162 +18,240 @@
         html, body {
             width: 100%;
             height: 100vh;
-            overflow: hidden;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-        }
-
-        body {
             background: linear-gradient(135deg, #1a5a96 0%, #2d7ab8 50%, #4fa3d1 100%);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            position: relative;
         }
 
-        .font-headline {
-            font-family: 'Chivo Mono', monospace;
-            font-weight: 800;
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
         }
 
         /* Header */
         .header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, #1a5a96 0%, #2d7ab8 50%, #4fa3d1 100%);
             padding: 8px 12px;
-            background: rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             flex-shrink: 0;
+            border-bottom: 2px solid #FFD700;
         }
 
-        .logo-img {
-            width: 60px;
-            height: 60px;
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .header-logo {
+            width: 50px;
+            height: 50px;
             object-fit: contain;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
         .header-title {
             color: white;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
-            text-align: center;
-            letter-spacing: 1px;
-            margin-top: 4px;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
         }
 
         .header-badge {
             background: #FFD700;
             color: #1B5E20;
-            padding: 3px 8px;
-            border-radius: 4px;
+            padding: 2px 6px;
+            border-radius: 3px;
             font-weight: bold;
-            font-size: 11px;
-            margin-top: 3px;
+            font-size: 10px;
+            width: fit-content;
         }
 
         .header-edition {
             color: white;
-            font-size: 9px;
-            margin-top: 2px;
+            font-size: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-right {
+            width: 80px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .header-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         /* Main Content */
-        .main-content {
-            display: flex;
+        .content {
             flex: 1;
-            gap: 12px;
+            display: flex;
+            gap: 10px;
             padding: 10px;
             overflow: hidden;
             min-height: 0;
         }
 
-        /* Photo Section */
-        .photo-section {
+        .photo-container {
             flex: 0 0 auto;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
-        .photo-section img {
+        .photo-container img {
             width: auto;
-            height: 100%;
-            max-width: 35vw;
-            max-height: 60vh;
+            height: auto;
+            max-width: 140px;
+            max-height: 280px;
             object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        /* Schedule Section */
-        .schedule-section {
+        .player-name {
+            color: #FFD700;
+            font-style: italic;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        /* Schedule Container */
+        .schedule-container {
             flex: 1;
             display: flex;
             flex-direction: column;
             gap: 6px;
             overflow-y: auto;
             padding-right: 6px;
+            min-height: 0;
         }
 
         .schedule-header {
-            color: white;
             text-align: center;
-            margin-bottom: 4px;
             flex-shrink: 0;
+            margin-bottom: 6px;
         }
 
-        .schedule-header h1 {
+        .schedule-header h2 {
             font-size: 20px;
             font-weight: bold;
-            color: #FFD700;
-            text-transform: uppercase;
             letter-spacing: 1px;
-            line-height: 1.1;
         }
 
-        .schedule-header h1 span {
+        .schedule-header h2 span:first-child {
             color: #00A86B;
+        }
+
+        .schedule-header h2 span:last-child {
+            color: #FFD700;
+        }
+
+        .schedule-items {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            overflow-y: auto;
+            flex: 1;
+            min-height: 0;
         }
 
         .schedule-item {
             display: flex;
             background: #FFD700;
-            border-radius: 6px;
+            border-radius: 4px;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             flex-shrink: 0;
-            font-size: 12px;
+            font-size: 11px;
+            min-height: 30px;
         }
 
         .schedule-date {
             background: #E74C3C;
             color: white;
-            padding: 8px 10px;
+            padding: 6px 8px;
             font-weight: bold;
             white-space: nowrap;
-            min-width: 90px;
-            text-align: center;
+            min-width: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
         }
 
         .schedule-teams {
             flex: 1;
-            padding: 8px 10px;
+            padding: 6px 8px;
             color: #000;
             font-weight: bold;
             display: flex;
             align-items: center;
+            font-size: 11px;
         }
 
-        /* Stats Banner */
-        .stats-banner {
+        /* Scrollbar */
+        .schedule-items::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .schedule-items::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .schedule-items::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.4);
+            border-radius: 2px;
+        }
+
+        /* Banner */
+        .banner {
+            background: #1a5a96;
+            color: #FFD700;
+            padding: 6px 12px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+            border-top: 1px solid #FFD700;
+            border-bottom: 1px solid #FFD700;
+        }
+
+        .banner span {
+            color: white;
+        }
+
+        /* Stats */
+        .stats {
             background: #1B5E20;
             color: white;
             padding: 6px 12px;
-            font-size: 11px;
             display: flex;
-            justify-content: center;
-            gap: 12px;
+            justify-content: space-around;
+            gap: 8px;
             flex-wrap: wrap;
+            font-size: 10px;
             flex-shrink: 0;
+            border-top: 1px solid #FFD700;
         }
 
         .stat-item {
@@ -184,108 +260,129 @@
             gap: 4px;
         }
 
-        .stat-item::before {
-            content: '■';
-            color: #FFD700;
-            font-size: 12px;
+        .stat-square {
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
         }
 
         /* Footer */
         .footer {
-            background-color: #0d3d66;
-            color: white;
+            background: white;
+            color: #000;
             text-align: center;
             padding: 4px;
-            font-size: 9px;
-            border-top: 1px solid #FFD700;
+            font-size: 10px;
+            font-weight: bold;
             flex-shrink: 0;
+            border-top: 1px solid #FFD700;
         }
 
-        /* Scrollbar styling */
-        .schedule-section::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .schedule-section::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .schedule-section::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.3);
-            border-radius: 2px;
-        }
-
-        @media (max-height: 600px) {
+        @media (max-width: 640px) {
             .header {
-                padding: 6px 10px;
-            }
-
-            .logo-img {
-                width: 50px;
-                height: 50px;
+                padding: 6px 8px;
             }
 
             .header-title {
-                font-size: 14px;
-                margin-top: 2px;
+                font-size: 12px;
             }
 
-            .schedule-header h1 {
-                font-size: 18px;
+            .header-right {
+                width: 60px;
+                height: 50px;
+            }
+
+            .content {
+                gap: 8px;
+                padding: 8px;
+            }
+
+            .photo-container img {
+                max-width: 100px;
+                max-height: 200px;
+            }
+
+            .schedule-header h2 {
+                font-size: 16px;
             }
 
             .schedule-item {
-                font-size: 11px;
+                font-size: 10px;
+                min-height: 28px;
             }
 
             .schedule-date {
-                padding: 6px 8px;
-                font-size: 11px;
-                min-width: 80px;
+                font-size: 9px;
+                padding: 4px 6px;
+                min-width: 75px;
             }
 
             .schedule-teams {
-                padding: 6px 8px;
-                font-size: 11px;
+                font-size: 10px;
+                padding: 4px 6px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        <img src="attached_assets/Gemini_Generated_Image_eiulgyeiulgyeiul-modified_1764406003436.png" alt="County Logo" class="logo-img">
-        <div class="header-title">FCPA BARASA | GOVERNOR'S CUP</div>
-        <div class="header-badge">BIGGER AND BETTER</div>
-        <div class="header-edition">2025 EDITION</div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Photo -->
-        <div class="photo-section">
-            <img src="attached_assets/557371635_1254015913197895_1440672237539985936_n_1764403511034.jpg" alt="Official Photo">
-        </div>
-
-        <!-- Schedule -->
-        <div class="schedule-section">
-            <div class="schedule-header">
-                <h1><span>FINALS</span>SCHEDULE</h1>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <img src="attached_assets/Gemini_Generated_Image_eiulgyeiulgyeiul-modified_1764406003436.png" alt="County Logo" class="header-logo">
+                <div class="header-text">
+                    <div class="header-title">FCPA BARASA | GOVERNOR'S CUP</div>
+                    <div class="header-badge">BIGGER AND BETTER</div>
+                    <div class="header-edition">2025 EDITION</div>
+                </div>
             </div>
-            <div id="schedule-container"></div>
+            <div class="header-right">
+                <img src="attached_assets/557371635_1254015913197895_1440672237539985936_n_1764403511034.jpg" alt="Trophy/Cup">
+            </div>
         </div>
-    </div>
 
-    <!-- Stats Banner -->
-    <div class="stats-banner">
-        <div class="stat-item">960 TEAMS</div>
-        <div class="stat-item">60 WARDS</div>
-        <div class="stat-item">12 SUBCOUNTIES</div>
-    </div>
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Photo Section -->
+            <div class="photo-container">
+                <img src="attached_assets/557371635_1254015913197895_1440672237539985936_n_1764403511034.jpg" alt="Official Photo">
+                <div class="player-name">~Harold</div>
+            </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        © 2025 Godfrey Lumumba. All Rights Reserved.
+            <!-- Schedule Section -->
+            <div class="schedule-container">
+                <div class="schedule-header">
+                    <h2><span>FINALS</span><span>SCHEDULE</span></h2>
+                </div>
+                <div class="schedule-items" id="schedule-items"></div>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="banner">
+            GET READY FOR <span>ULTIMATE SPORTING</span> EXPERIENCE
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-square"></div>
+                <span>960 TEAMS #GovernorBarasaDifference</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-square"></div>
+                <span>60 WARDS #MyWard</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-square"></div>
+                <span>12 SUBCOUNTIES #2025Edition</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            copyright 2025 @Godfrey Lumumba
+        </div>
     </div>
 
     <script>
@@ -295,27 +392,23 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const scheduleData = [
-                { date: "02ND DEC", teams: "IKOLOMANI & SHINYALU" },
-                { date: "03RD DEC", teams: "BUTERE & MUMIAS WEST" },
-                { date: "04TH DEC", teams: "LURAMBI & KHWISERO" },
-                { date: "07TH DEC", teams: "MATUNGU & MUMIAS EAST" },
-                { date: "08TH DEC", teams: "LIKUYANI & LUGARI" }
+                { date: "02ND DEC 2025", teams: "IKOLOMANI & SHINYALU" },
+                { date: "03RD DEC 2025", teams: "BUTERE & MUMIAS WEST" },
+                { date: "04TH DEC 2025", teams: "LURAMBI & KHWISERO" },
+                { date: "07TH DEC 2025", teams: "MATUNGU & MUMIAS EAST" },
+                { date: "08TH DEC 2025", teams: "LIKUYANI & LUGARI" }
             ];
 
-            const container = document.getElementById('schedule-container');
-            const fragment = document.createDocumentFragment();
-
+            const container = document.getElementById('schedule-items');
             scheduleData.forEach(item => {
-                const scheduleItem = document.createElement('div');
-                scheduleItem.className = 'schedule-item';
-                scheduleItem.innerHTML = `
+                const div = document.createElement('div');
+                div.className = 'schedule-item';
+                div.innerHTML = `
                     <div class="schedule-date">${item.date}</div>
                     <div class="schedule-teams">${item.teams}</div>
                 `;
-                fragment.appendChild(scheduleItem);
+                container.appendChild(div);
             });
-
-            container.appendChild(fragment);
         });
     </script>
 </body>
