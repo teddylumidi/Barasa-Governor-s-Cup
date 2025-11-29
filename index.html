@@ -8,8 +8,6 @@
     <title>FCPA Barasa | Governor's Cup 2025 Finals</title>
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%231a5a96' width='192' height='192'/><text x='96' y='110' font-size='80' font-weight='bold' text-anchor='middle' fill='%23FFD700'>FC</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%231a5a96' width='192' height='192'/><text x='96' y='110' font-size='80' font-weight='bold' text-anchor='middle' fill='%23FFD700'>FC</text></svg>">
-    <script src="https://cdn.tailwindcss.com" defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&display=swap');
         
@@ -19,15 +17,18 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
+        html, body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            overflow-x: hidden;
-            background: #f5f5f5;
-            contain: layout style paint;
+            background: linear-gradient(135deg, #1a5a96 0%, #2d7ab8 50%, #4fa3d1 100%);
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
 
         .font-headline {
@@ -35,424 +36,270 @@
             font-weight: 800;
         }
 
-        .main-container {
-            background: linear-gradient(135deg, #1a5a96 0%, #2d7ab8 50%, #4fa3d1 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .diagonal-accent {
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
-            pointer-events: none;
-            will-change: transform;
-        }
-
-        .schedule-item {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            background: #FFD700;
-            margin: 10px 0;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            will-change: transform;
-        }
-
-        .schedule-item:active {
-            transform: scale(0.98);
-        }
-
-        @media (min-width: 640px) {
-            .schedule-item {
-                flex-direction: row;
-                align-items: center;
-            }
-
-            .schedule-item:hover {
-                transform: translateX(8px);
-                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            }
-        }
-
-        .schedule-date {
-            background: #E74C3C;
-            color: white;
-            padding: 12px 16px;
-            font-weight: bold;
-            white-space: nowrap;
-            font-size: 14px;
-            width: 100%;
-            text-align: center;
-        }
-
-        @media (min-width: 640px) {
-            .schedule-date {
-                min-width: 110px;
-                width: auto;
-                padding: 16px 20px;
-                font-size: 16px;
-            }
-        }
-
-        .schedule-teams {
-            flex: 1;
-            padding: 12px 16px;
-            color: #000;
-            font-weight: bold;
-            font-size: 14px;
-            width: 100%;
-        }
-
-        @media (min-width: 640px) {
-            .schedule-teams {
-                padding: 16px 24px;
-                font-size: 16px;
-            }
-        }
-
-        .stats-section {
-            background: #1B5E20;
-            color: white;
-            padding: 16px 12px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-
-        @media (min-width: 640px) {
-            .stats-section {
-                display: flex;
-                justify-content: center;
-                gap: 40px;
-                flex-wrap: wrap;
-                padding: 20px;
-            }
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-        }
-
-        @media (min-width: 640px) {
-            .stat-item {
-                gap: 12px;
-                font-size: 16px;
-            }
-        }
-
-        .stat-item::before {
-            content: '■';
-            color: #FFD700;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        @media (min-width: 640px) {
-            .stat-item::before {
-                font-size: 24px;
-            }
-        }
-
-        .stat-text {
-            font-weight: bold;
-        }
-
-        .logo-area {
+        /* Header */
+        .header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 10;
-        }
-
-        @media (min-width: 640px) {
-            .logo-area {
-                gap: 16px;
-                margin-bottom: 30px;
-            }
-        }
-
-        .logo-area img {
-            width: 100px;
-            height: auto;
+            justify-content: center;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.1);
             flex-shrink: 0;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
         }
 
-        @media (min-width: 640px) {
-            .logo-area img {
-                width: 140px;
-            }
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
         }
 
-        .branding-section {
-            text-align: center;
+        .header-title {
             color: white;
-            margin: 0;
-        }
-
-        .gov-cup {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            margin-bottom: 6px;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-top: 4px;
         }
 
-        @media (min-width: 640px) {
-            .gov-cup {
-                font-size: 28px;
-                margin-bottom: 10px;
-            }
-        }
-
-        .bigger-better {
+        .header-badge {
             background: #FFD700;
             color: #1B5E20;
-            padding: 6px 12px;
-            display: inline-block;
-            font-weight: bold;
+            padding: 3px 8px;
             border-radius: 4px;
-            font-size: 14px;
+            font-weight: bold;
+            font-size: 11px;
+            margin-top: 3px;
         }
 
-        @media (min-width: 640px) {
-            .bigger-better {
-                padding: 8px 20px;
-                font-size: 20px;
-            }
+        .header-edition {
+            color: white;
+            font-size: 9px;
+            margin-top: 2px;
         }
 
-        .edition {
-            font-size: 10px;
-            margin-top: 6px;
-        }
-
-        @media (min-width: 640px) {
-            .edition {
-                font-size: 12px;
-                margin-top: 8px;
-            }
-        }
-
+        /* Main Content */
         .main-content {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 16px;
-            position: relative;
-            z-index: 2;
+            flex: 1;
+            gap: 12px;
+            padding: 10px;
+            overflow: hidden;
+            min-height: 0;
         }
 
-        @media (min-width: 768px) {
-            .main-content {
-                flex-direction: row;
-                gap: 40px;
-                padding: 40px 20px;
-            }
-        }
-
+        /* Photo Section */
         .photo-section {
             flex: 0 0 auto;
-            position: relative;
-            min-height: 200px;
             display: flex;
+            align-items: center;
             justify-content: center;
         }
 
-        @media (min-width: 768px) {
-            .photo-section {
-                min-height: auto;
-            }
-        }
-
         .photo-section img {
-            width: 100%;
-            max-width: 280px;
-            height: auto;
+            width: auto;
+            height: 100%;
+            max-width: 35vw;
+            max-height: 60vh;
             object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-            contain: layout style paint;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        @media (min-width: 768px) {
-            .photo-section img {
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            }
-        }
-
+        /* Schedule Section */
         .schedule-section {
             flex: 1;
-            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            overflow-y: auto;
+            padding-right: 6px;
         }
 
         .schedule-header {
-            margin-bottom: 20px;
-        }
-
-        .schedule-header .signature {
-            font-size: 20px;
             color: white;
-            font-style: italic;
-            margin-bottom: 8px;
-        }
-
-        @media (min-width: 640px) {
-            .schedule-header .signature {
-                font-size: 28px;
-                margin-bottom: 10px;
-            }
+            text-align: center;
+            margin-bottom: 4px;
+            flex-shrink: 0;
         }
 
         .schedule-header h1 {
-            font-size: 32px;
+            font-size: 20px;
             font-weight: bold;
             color: #FFD700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            line-height: 1.2;
-        }
-
-        @media (min-width: 640px) {
-            .schedule-header h1 {
-                font-size: 48px;
-                letter-spacing: 3px;
-            }
+            letter-spacing: 1px;
+            line-height: 1.1;
         }
 
         .schedule-header h1 span {
             color: #00A86B;
         }
 
-        .cta-banner {
-            background: rgba(255,255,255,0.15);
-            color: #FFD700;
-            padding: 16px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 16px;
-            margin-top: 24px;
-            border-top: 2px solid #FFD700;
-            border-bottom: 2px solid #FFD700;
-            line-height: 1.4;
+        .schedule-item {
+            display: flex;
+            background: #FFD700;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            font-size: 12px;
         }
 
-        @media (min-width: 640px) {
-            .cta-banner {
-                padding: 20px;
-                font-size: 20px;
-                margin-top: 40px;
-                border-top: 3px solid #FFD700;
-                border-bottom: 3px solid #FFD700;
-            }
-        }
-
-        .cta-banner .ultimate {
+        .schedule-date {
+            background: #E74C3C;
             color: white;
+            padding: 8px 10px;
+            font-weight: bold;
+            white-space: nowrap;
+            min-width: 90px;
+            text-align: center;
         }
 
-        .cta-banner .experience {
-            color: #E74C3C;
+        .schedule-teams {
+            flex: 1;
+            padding: 8px 10px;
+            color: #000;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
+        /* Stats Banner */
+        .stats-banner {
+            background: #1B5E20;
+            color: white;
+            padding: 6px 12px;
+            font-size: 11px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            flex-shrink: 0;
         }
 
-        @supports (scrollbar-width: thin) {
-            body {
-                scrollbar-width: thin;
-                scrollbar-color: #1a5a96 transparent;
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .stat-item::before {
+            content: '■';
+            color: #FFD700;
+            font-size: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0d3d66;
+            color: white;
+            text-align: center;
+            padding: 4px;
+            font-size: 9px;
+            border-top: 1px solid #FFD700;
+            flex-shrink: 0;
+        }
+
+        /* Scrollbar styling */
+        .schedule-section::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .schedule-section::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .schedule-section::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+        }
+
+        @media (max-height: 600px) {
+            .header {
+                padding: 6px 10px;
             }
-        }
 
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .header-title {
+                font-size: 14px;
+                margin-top: 2px;
+            }
+
+            .schedule-header h1 {
+                font-size: 18px;
+            }
+
+            .schedule-item {
+                font-size: 11px;
+            }
+
+            .schedule-date {
+                padding: 6px 8px;
+                font-size: 11px;
+                min-width: 80px;
+            }
+
+            .schedule-teams {
+                padding: 6px 8px;
+                font-size: 11px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <div class="diagonal-accent"></div>
-        
-        <div style="max-width: 1200px; margin: 0 auto; padding: 16px; position: relative; z-index: 2;">
-            <div class="logo-area">
-                <img src="attached_assets/Gemini_Generated_Image_eiulgyeiulgyeiul-modified_1764406003436.png" alt="County Government of Kakamega Logo" loading="lazy" width="140" height="140">
-                <div class="branding-section">
-                    <div class="gov-cup">FCPA BARASA | GOVERNOR'S CUP</div>
-                    <div class="bigger-better">BIGGER AND BETTER</div>
-                    <div class="edition">2025 EDITION</div>
-                </div>
+    <!-- Header -->
+    <div class="header">
+        <img src="attached_assets/Gemini_Generated_Image_eiulgyeiulgyeiul-modified_1764406003436.png" alt="County Logo" class="logo-img">
+        <div class="header-title">FCPA BARASA | GOVERNOR'S CUP</div>
+        <div class="header-badge">BIGGER AND BETTER</div>
+        <div class="header-edition">2025 EDITION</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Photo -->
+        <div class="photo-section">
+            <img src="attached_assets/557371635_1254015913197895_1440672237539985936_n_1764403511034.jpg" alt="Official Photo">
+        </div>
+
+        <!-- Schedule -->
+        <div class="schedule-section">
+            <div class="schedule-header">
+                <h1><span>FINALS</span>SCHEDULE</h1>
             </div>
-
-            <div class="main-content">
-                <div class="photo-section">
-                    <img src="attached_assets/557371635_1254015913197895_1440672237539985936_n_1764403511034.jpg" alt="Official Photo" loading="lazy" width="280" height="400" srcset="attached_assets/557371635_1254015913197895_1440672237539985936_n_1764403511034.jpg 400w">
-                </div>
-
-                <div class="schedule-section">
-                    <div class="schedule-header">
-                        <div class="signature">~Harold</div>
-                        <h1><span>FINALS</span>SCHEDULE</h1>
-                    </div>
-
-                    <div id="schedule-container"></div>
-                </div>
-            </div>
-
-            <div class="cta-banner">
-                GET READY FOR <span class="ultimate">ULTIMATE</span> SPORTING <span class="experience">EXPERIENCE!</span>
-            </div>
+            <div id="schedule-container"></div>
         </div>
     </div>
 
-    <div class="stats-section">
-        <div class="stat-item">
-            <span class="stat-text">960 TEAMS #GovernorBarasaDelivers</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-text">60 WARDS #NiYetu</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-text">12 SUBCOUNTIES #2025Edition</span>
-        </div>
+    <!-- Stats Banner -->
+    <div class="stats-banner">
+        <div class="stat-item">960 TEAMS</div>
+        <div class="stat-item">60 WARDS</div>
+        <div class="stat-item">12 SUBCOUNTIES</div>
     </div>
 
-    <footer style="background-color: #0d3d66; color: white; text-align: center; padding: 16px; font-size: 14px; border-top: 1px solid #FFD700;">
-        <p>&copy; 2025 Godfrey Lumumba. All Rights Reserved.</p>
-    </footer>
+    <!-- Footer -->
+    <div class="footer">
+        © 2025 Godfrey Lumumba. All Rights Reserved.
+    </div>
 
     <script>
-        // Register service worker for offline-first capability
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(err => console.log('SW registration failed:', err));
+            navigator.serviceWorker.register('sw.js').catch(() => {});
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const scheduleData = [
-                { date: "02ND DEC 2025", teams: "IKOLOMANI & SHINYALU" },
-                { date: "03RD DEC 2025", teams: "BUTERE & MUMIAS WEST" },
-                { date: "04TH DEC 2025", teams: "LURAMBI & KHWISERO" },
-                { date: "07TH DEC 2025", teams: "MATUNGU & MUMIAS EAST" },
-                { date: "08TH DEC 2025", teams: "LIKUYANI & LUGARI" }
+                { date: "02ND DEC", teams: "IKOLOMANI & SHINYALU" },
+                { date: "03RD DEC", teams: "BUTERE & MUMIAS WEST" },
+                { date: "04TH DEC", teams: "LURAMBI & KHWISERO" },
+                { date: "07TH DEC", teams: "MATUNGU & MUMIAS EAST" },
+                { date: "08TH DEC", teams: "LIKUYANI & LUGARI" }
             ];
 
             const container = document.getElementById('schedule-container');
